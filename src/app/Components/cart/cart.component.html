@@ -1,0 +1,39 @@
+<div class="container my-5" style="min-height: 400px;">
+  <h2 class="mb-4 text-center">Shopping Cart</h2>
+  
+  <div class="row">
+    <!-- Cart Items Section -->
+    <div class="col-12 col-md-8">
+      <div *ngFor="let product of cartProducts; let i = index" class="cart-item row mb-3 align-items-center border-bottom pb-3">
+        <div class="col-12 col-md-4 mb-3 mb-md-0">
+          <img [src]="product.image" alt="{{ product.title }}" class="img-fluid rounded">
+        </div>
+        <div class="col-12 col-md-8">
+          <div class="cart-item-info d-flex justify-content-between align-items-center">
+            <div>
+              <h4>{{ product.title }}</h4>
+              <p class="text-muted">{{ product.category }}</p>
+              <p class="mb-2">{{ product.description }}</p>
+              <p class="font-weight-bold">Price: ${{ product.price }}</p>
+            </div>
+            <button class="btn btn-danger" (click)="removeFromCart(i)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Summary Section -->
+    <div class="col-12 col-md-4 mt-4 mt-md-0">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+          Cart Summary
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Total: ${{ getTotalPrice() }}</h5>
+          <p class="card-text">Items in cart: {{ cartProducts.length }}</p>
+          <a href="#" class="btn btn-success btn-block mt-3">Proceed to Checkout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

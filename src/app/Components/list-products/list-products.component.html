@@ -1,0 +1,67 @@
+<!--
+once i click search it displays specified user and reset button appears
+if reset button is clicked  users are displayed again
+-->
+
+
+<div class="container">
+    <div class="row">
+        <h3>Products</h3>
+        <div class="col m-5">
+            <input type="text" class="form-control" placeholder="Search..."  [(ngModel)]="searchID" name="searchQuery" required>
+        </div>
+        <div class="col m-5">
+            <button class="btn btn-primary" type="submit" (click)="Search()"><i class="bi bi-search"></i> Search</button>
+        </div>
+        <div class="col m-5">
+            <button class="btn btn-primary" type="clear" (click)="reset()" *ngIf="resetVisible">Reset</button>
+        </div>
+    </div>
+    
+    <div class="row m-5" *ngIf="resultShown">
+        @for(product of productList ; track product.id){
+        <div class="col-md-4 mb-4">
+            <div class="card text-center" style="width: 12rem; border-radius: 1rem;">
+                <img src="{{product.image}}" class="card-img-top rounded-circle" alt="Card image">
+                <div class="card-body">
+                    <p class="card-text" style="font: bold;">
+                        {{product.title}}  
+                    </p>
+                    <p class="card-text"> {{product.price}}</p>
+                    <div class="row">
+                        <div class="col">
+                            <button (click)="showDetails(product)">Show Details</button>
+                        </div>
+                        <div class="col">
+                            <button (click)="addToCart(product.id)">Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    
+        }
+        @empty {
+            Empty list
+        }
+    </div>
+
+
+    <app-product-details *ngIf="selectedProduct" [product]="selectedProduct"></app-product-details>
+
+    <div class="row m-5" *ngIf="resultnotshown">
+        <div class="col-md-4 mb-4">
+            <div class="card text-center" style="width: 12rem; border-radius: 1rem;">
+                <img src="{{image}}" class="card-img-top rounded-circle" alt="Card image">
+                <div class="card-body">
+                <p class="card-text" style="font: bold;">
+                    {{title}} </p>
+                <p class="card-text"> {{price}}</p>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

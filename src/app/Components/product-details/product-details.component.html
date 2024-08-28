@@ -1,0 +1,17 @@
+<div class="container my-5">
+  <div class="row">
+      <!-- Product Image and Details -->
+      <div class="col-lg-6 col-md-12 mb-4">
+          <div class="card shadow-sm border-0 rounded">
+              <img [src]="product.image" alt="{{ product.title }}" class="card-img-top product-image rounded">
+              <div class="card-body">
+                  <h2 class="card-title">{{ product.title }}</h2>
+                  <p class="card-text"><strong>Price:</strong> \${{ product.price.toFixed(2) }}</p>
+                  <p class="card-text"><strong>Description:</strong> {{ product.description }}</p>
+                  <p class="card-text"><strong>Category:</strong> {{ product.category }}</p>
+                  <p class="card-text"><strong>Rating:</strong> {{ product.rating.rate }} ({{ product.rating.count }} reviews)</p>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
